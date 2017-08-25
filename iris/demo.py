@@ -39,7 +39,7 @@ def get_models():
     return models
 
 
-def train_model(model, X_train, Y_train, seed=7):
+def evaluate_model(model, X_train, Y_train, seed=7):
     """
     Train a model using 10-fold cross validation
     :param model: The model instance
@@ -70,7 +70,7 @@ def main():
     results = []
     names = []
     for name, model in models.items():
-        cv_results = train_model(model, X_train, Y_train)
+        cv_results = evaluate_model(model, X_train, Y_train)
         results.append((name, cv_results.mean(), cv_results.std()))
         names.append(name)
         msg = '%s: %f (%f)' % (name, cv_results.mean(), cv_results.std())
